@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CtrlCommandes">
+   <children>
+      <GridPane alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="162.0" prefWidth="743.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="128.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="229.0" minWidth="10.0" prefWidth="202.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0" minWidth="10.0" prefWidth="89.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.0" minWidth="10.0" prefWidth="155.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="168.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Client associé : " GridPane.rowIndex="1" />
+            <Label text="Date de la commande : " />
+            <DatePicker fx:id="dateCde" GridPane.columnIndex="1" />
+            <ComboBox fx:id="cbxClient" onAction="#choixCl" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Produit : " GridPane.columnIndex="3" />
+            <Label text="Quantité : " GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cbxProd" onAction="#choixProd" prefWidth="150.0" GridPane.columnIndex="4" />
+            <TextField fx:id="txtQte" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label text="Tarif unitaire : " GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label fx:id="lblTarif" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" layoutX="-6.0" layoutY="200.0" prefHeight="50.0" prefWidth="381.0" rowValignment="TOP">
+         <children>
+            <Button fx:id="btnCreer" mnemonicParsing="false" onAction="#creerModele" text="Créer" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" layoutY="268.0" prefHeight="69.0" prefWidth="381.0">
+         <children>
+            <Label fx:id="lblCde" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" layoutX="369.0" layoutY="200.0" prefHeight="50.0" prefWidth="381.0" rowValignment="TOP">
+         <children>
+            <Button fx:id="btnCreerLigne" mnemonicParsing="false" onAction="#creerLigneCde" text="Ajouter à la commande" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" layoutX="369.0" layoutY="268.0" prefHeight="69.0" prefWidth="381.0">
+         <children>
+            <Label fx:id="lblLigneCde" />
+         </children>
+      </FlowPane>
+      <GridPane layoutX="21.0" layoutY="427.0" prefHeight="232.0" prefWidth="709.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="346.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="25.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="343.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TableView fx:id="tblCde" prefHeight="232.0" prefWidth="337.0" />
+            <TableView fx:id="tblLigneCde" prefHeight="232.0" prefWidth="348.0" visible="false" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <ComboBox fx:id="cbxTri" layoutX="73.0" layoutY="396.0" onAction="#choixTri" prefHeight="25.0" prefWidth="102.0" />
+      <Label layoutX="19.0" layoutY="400.0" text="Trier par : " />
+      <ComboBox fx:id="cbxFiltreClient" layoutX="252.0" layoutY="367.0" onAction="#filtreClient" prefHeight="25.0" prefWidth="117.0" />
+      <Label layoutX="188.0" layoutY="371.0" text="Filtrer par :" />
+      <Button fx:id="btnSupprimer" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="216.0" layoutY="672.0" mnemonicParsing="false" onAction="#supprimerModele" text="Supprimer" />
+      <Button fx:id="btnModifier" disable="true" layoutX="301.0" layoutY="672.0" mnemonicParsing="false" onAction="#modifierModele" text="Modifier" />
+      <Button fx:id="btnSupprimerLigne" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="583.0" layoutY="672.0" mnemonicParsing="false" onAction="#supprimerLigneCde" text="Supprimer" />
+      <Button fx:id="btnModifierLigne" disable="true" layoutX="669.0" layoutY="672.0" mnemonicParsing="false" onAction="#modifierLigneCde" text="Modifier" />
+      <ComboBox fx:id="cbxFiltreProd" layoutX="252.0" layoutY="396.0" onAction="#filtreProd" prefHeight="25.0" prefWidth="117.0" />
+      <Label fx:id="lblErreurSuppr" layoutX="88.0" layoutY="329.0" text="La commande n'est pas vide, la suppression est impossible." textFill="RED" visible="false" />
+   </children>
+</Pane>
